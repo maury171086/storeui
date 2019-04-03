@@ -1,0 +1,15 @@
+.example-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.example-container > * {
+  width: 100%;
+}
+table {
+  width: 100%;
+}
+.table-container {
+  max-height: 60vh;
+  overflow: auto;
+}

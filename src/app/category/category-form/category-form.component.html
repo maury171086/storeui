@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>Category Form</h2>
+<form [formGroup]="categoryForm" (ngSubmit)="onClickSave()">
+  <mat-dialog-content class="mat-typography">
+    <div class="category-form-container">
+      <input type="hidden" formControlName="id" id="id">
+      <mat-form-field appearance="outline">
+        <input matInput type="text" placeholder="Category name" formControlName="name" id="name">
+        <mat-error *ngIf="name?.errors?.required">Name is required</mat-error>
+      </mat-form-field>
+
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!categoryForm.valid">SAVE</button>
+  </mat-dialog-actions>
+</form>

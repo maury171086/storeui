@@ -1,0 +1,41 @@
+<mat-list>
+  <div fxLayout="row wrap" fxLayoutAlign="center center" class="layout-wrapper">
+    <div fxFlex="80%" fxFlex.lt-md="100%" class="flex-wrapper">
+      <button mat-raised-button color="primary" (click)="openCreateBrandForm()">
+        ADD NEW BRAND
+        <mat-icon>library_add</mat-icon>
+      </button>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+</mat-list>
+<div fxLayout="row wrap" fxLayoutAlign="center center" class="layout-wrapper">
+  <div fxFlex="80%" fxFlex.lt-md="100%" class="flex-wrapper">
+    <div class="table-container mat-elevation-z8">
+      <table mat-table [dataSource]="brands">
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef width="30%">BRAND ID</th>
+          <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef width="50%">BRAND NAME</th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+        <!-- Star Column -->
+        <ng-container matColumnDef="options">
+          <th mat-header-cell *matHeaderCellDef width="20%">OPTIONS</th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-mini-fab color="primary" (click)="openUpdateBrandForm(element)">
+              <mat-icon>edit</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="brandColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: brandColumns;"></tr>
+      </table>
+    </div>
+  </div>
+</div>

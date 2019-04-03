@@ -1,0 +1,8 @@
+.brand-form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-form-container > * {
+  width: 100%;
+}

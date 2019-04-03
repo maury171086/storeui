@@ -1,0 +1,53 @@
+<mat-list>
+  <div fxLayout="row wrap" fxLayoutAlign="center center" class="layout-wrapper">
+    <div fxFlex="80%" fxFlex.lt-md="100%" class="flex-wrapper">
+      <form [formGroup]="filterForm" (ngSubmit)="onClickFilter()">
+        <mat-dialog-content class="mat-typography">
+          <div class="home-form-container">
+            <mat-form-field appearance="outline">
+              <mat-select placeholder="FILTER BY" formControlName="column">
+                <mat-option *ngFor="let filter of filters; let i = index" value="{{filter.name}}">
+                  {{ filter.name | uppercase }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" *ngIf="selectSearch">
+              <mat-select placeholder="SEARCH" formControlName="search">
+                <mat-option *ngFor="let filter of filterValues; let i = index" value="{{filter.name}}">
+                  {{ filter.name }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" *ngIf="!selectSearch">
+              <input matInput type="text" placeholder="Search" formControlName="search" id="search">
+            </mat-form-field>
+            <button mat-raised-button color="primary" type="submit" [disabled]="!filterForm.valid">SEARCH</button>
+            <span class="btn-reset" color="primary" (click)="cleanFilter()">RESET</span>
+          </div>
+        </mat-dialog-content>
+      </form>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+</mat-list>
+<div fxLayout="row wrap" fxLayoutAlign="center center" class="layout-wrapper">
+  <div fxFlex="90%" fxFlex.lt-md="100%" class="flex-wrapper">
+    <mat-grid-list cols="4" rowHeight="400px">
+      <mat-grid-tile *ngFor="let item of items; let i = index">
+        <mat-card fxFlex="90%">
+          <img src="{{item?.imageGalleries[0]?.url}}" class="item-md-card-image-cover" alt="image caption"/>
+          <span>{{item.name}}</span>
+          <mat-chip-list aria-label="Fish selection">
+            <mat-chip color="primary" selected><strong>$us :</strong> {{ item.price}}</mat-chip>
+            <mat-chip>Brand :{{ item.brand.name}}</mat-chip>
+            <mat-chip>Category :{{ item.category.name}}</mat-chip>
+            <mat-chip>Capacity :{{ item.capacity}}</mat-chip>
+            <button mat-mini-fab (click)="openGallery(item)">
+              <mat-icon>collections</mat-icon>
+            </button>
+          </mat-chip-list>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+{
+  "generator-ngx-rocket": {
+    "version": "5.3.0",
+    "props": {
+      "appName": "storeui",
+      "target": [
+        "web"
+      ],
+      "pwa": false,
+      "ui": "material",
+      "layout": "side-menu",
+      "auth": false,
+      "lazy": true,
+      "angulartics": false,
+      "prettier": false,
+      "projectName": "storeui",
+      "packageManager": "npm",
+      "mobile": []
+    }
+  }
+}

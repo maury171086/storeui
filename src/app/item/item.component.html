@@ -1,0 +1,72 @@
+<mat-list>
+  <div fxLayout="row wrap" fxLayoutAlign="center center" class="layout-wrapper">
+    <div fxFlex="80%" fxFlex.lt-md="100%" class="flex-wrapper">
+      <button mat-raised-button color="primary" (click)="openCreateItemForm()">
+        ADD NEW ITEM
+        <mat-icon>library_add</mat-icon>
+      </button>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+</mat-list>
+<div fxLayout="row wrap" fxLayoutAlign="center center" class="layout-wrapper">
+  <div fxFlex="80%" fxFlex.lt-md="100%" class="flex-wrapper">
+    <div class="table-container mat-elevation-z8">
+      <table mat-table [dataSource]="items">
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>ITEM NAME</th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+        <!-- Name Column -->
+        <ng-container matColumnDef="category">
+          <th mat-header-cell *matHeaderCellDef>ITEM CATEGORY</th>
+          <td mat-cell *matCellDef="let element"> {{element.category.name}} </td>
+        </ng-container>
+        <!-- Name Column -->
+        <ng-container matColumnDef="brand">
+          <th mat-header-cell *matHeaderCellDef>ITEM BRAND</th>
+          <td mat-cell *matCellDef="let element"> {{element.brand.name}} </td>
+        </ng-container>
+        <!-- price Column -->
+        <ng-container matColumnDef="price">
+          <th mat-header-cell *matHeaderCellDef>ITEM PRICE</th>
+          <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+        </ng-container>
+        <!-- Name Column -->
+        <ng-container matColumnDef="capacity">
+          <th mat-header-cell *matHeaderCellDef>ITEM CAPACITY</th>
+          <td mat-cell *matCellDef="let element"> {{element.capacity}} </td>
+        </ng-container>
+        <!-- Name Column -->
+        <ng-container matColumnDef="importPrice">
+          <th mat-header-cell *matHeaderCellDef>ITEM IMPORT PRICE</th>
+          <td mat-cell *matCellDef="let element"> {{element.importPrice}} </td>
+        </ng-container>
+        <!-- description Column -->
+        <ng-container matColumnDef="description">
+          <th mat-header-cell *matHeaderCellDef>ITEM DESCRIPTION</th>
+          <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+        </ng-container>
+
+        <!-- Star Column -->
+        <ng-container matColumnDef="options">
+          <th mat-header-cell *matHeaderCellDef>OPTIONS</th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-mini-fab color="primary" (click)="opeAddImageItemForm(element)">
+              <mat-icon>collections</mat-icon>
+            </button>
+            <button mat-mini-fab color="primary" (click)="openUpdateItemForm(element)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-mini-fab color="warn" (click)="openDeleteItemForm(element)">
+              <mat-icon>delete_sweep</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="itemColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: itemColumns;"></tr>
+      </table>
+    </div>
+  </div>
+</div>

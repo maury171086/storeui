@@ -1,0 +1,16 @@
+<h2 mat-dialog-title>Brand Form</h2>
+<form [formGroup]="brandForm" (ngSubmit)="onClickSave()">
+  <mat-dialog-content class="mat-typography">
+    <div class="brand-form-container">
+      <input type="hidden" formControlName="id" id="id">
+      <mat-form-field appearance="outline">
+        <input matInput type="text" placeholder="Brand's name" formControlName="name" id="name">
+        <mat-error *ngIf="name?.errors?.required">Name is required</mat-error>
+      </mat-form-field>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!brandForm.valid">SAVE</button>
+  </mat-dialog-actions>
+</form>
